@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="header">
-      <h2>My Todos</h2>
+      <h2 class="text-2xl font-bold">
+        My Todos
+      </h2>
       <div>
         <button class="btn btn-primary" @click="filterTodos('all')">
           All

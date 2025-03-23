@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h2>Add New Todo</h2>
+    <h2 class="text-2xl font-bold">
+      Add New Todo
+    </h2>
     <form @submit.prevent="addTodo">
       <div class="form-group">
         <label for="title">
