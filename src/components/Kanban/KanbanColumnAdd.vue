@@ -15,8 +15,8 @@
     <div v-else class="cursor-pointer hover:shadow-xl bg-kanban-black rounded-lg !px-[6px] !pt-1">
       <div>
         <textarea
-          ref="textarea" v-model="input"
-          class="text-gray-300 text-sm resize-none rounded-sm w-full  bg-kanban-input !pl-2 !py-1"
+          ref="textarea" v-model="input" 
+          class=" outline-2 outline-gray-500 text-gray-300 text-sm resize-none rounded-sm w-full  bg-kanban-input !pl-2 !py-1"
           rows="1"
           placeholder="Enter a title" />
       </div>

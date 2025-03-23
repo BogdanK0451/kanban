@@ -15,10 +15,12 @@
   </div>
 </template>
   
-  <script setup lang="ts">
-defineProps<{
+<script setup lang="ts">
+interface Props {
   buttonText: string
-}>()
+}
+
+defineProps<Props>()
 
 defineEmits<{
   (e: 'confirm'): void

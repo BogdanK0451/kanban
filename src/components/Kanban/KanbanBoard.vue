@@ -1,7 +1,7 @@
 
 
 <template>
-  <div class="!ml-1 !mt-3 flex overflow-x-auto">
+  <div class="!ml-1 !mt-3 flex overflow-x-auto overflow-y-hidden">
     <template v-for="[index, column] of kanban.columns.entries()" :key="column"> 
       <kanban-column :column="column" :column-index="index" />
     </template>

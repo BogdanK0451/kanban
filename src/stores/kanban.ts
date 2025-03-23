@@ -25,7 +25,6 @@ export const useKanbanStore = defineStore('kanban', () => {
   )
 
   function addColumn(title: string) {
-    console.log(title)
     kanban.value.columns.push({ title, tasks: [] })
   }
   function renameColumn(newName: string, index: number) {

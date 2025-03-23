@@ -151,3 +151,14 @@ textarea {
 textarea::-webkit-scrollbar {
   display: none;
 }
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(50, 48, 48);
+}
+::-webkit-scrollbar-thumb {
+  background: #1b3724;
+  border-radius: 10px;
+}

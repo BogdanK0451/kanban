@@ -1,5 +1,5 @@
 <template>
-  <div class="!h-screen  min-w-full overflow-hidden md:h-auto md:overflow-y-auto">
+  <div class="!h-screen  min-w-full">
     <router-view />
   </div>
 </template>
