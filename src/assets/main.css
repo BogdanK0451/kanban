@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
 
+@theme {
+  --color-greenish: #282F27;
+  --color-kanban-black:#101204;
+  --color-kanban-input:#22272B;
+  --color-button-hover:#85B8FF;
+  --color-button:#579dff;
+  --color-some-text:#162D4E;
+}
+
 :root {
   --primary-color: #4f46e5;
   --secondary-color: #818cf8;
@@ -14,9 +23,6 @@
   --border-color: #e5e7eb;
 }
 
-div#app{
-  height:100vh
-}
 
 * {
   box-sizing: border-box;
@@ -134,3 +140,14 @@ body {
 .form-group {
   margin-bottom: 1rem;
 } 
+
+
+
+textarea {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}

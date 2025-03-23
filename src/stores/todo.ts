@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
 import type { Todo } from '../types/todo'
+import { Kanban } from '../types/kanban'
 
 export const useTodoStore = defineStore('todo', {
   state: () => ({
+    kandan: null as Kanban | null,
     todos: [] as Todo[],
   }),
   actions: {

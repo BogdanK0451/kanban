@@ -6,12 +6,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      redirect: '/todos',
+      redirect: '/kanban',
     },
     {
       path: '/todos',
       name: 'todos',
       component: () => import('../views/TodoView.vue'),
+    },
+    {
+      path: '/kanban',
+      name: 'kanban',
+      component: () => import('../views/KanbanView.vue'),
     },
   ],
 })

@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <h1>Todo App</h1>
+    <h1 class="text-3xl font-bold">
+      Todo App
+    </h1>
     <div class="card">
       <todo-form />
     </div>
@@ -13,4 +15,4 @@
 <script setup lang="ts">
 import TodoForm from '../components/TodoForm.vue'
 import TodoList from '../components/TodoList.vue'
-</script>
+</script>
