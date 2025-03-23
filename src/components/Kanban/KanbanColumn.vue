@@ -21,11 +21,19 @@
           </span>
         </button>
       </div>
-      <div class="max-h-[77vh] overflow-y-scroll">
-        <template v-for="[index, task] of column?.tasks.entries()" :key="task">
-          <kanban-task :task="task" :column-index="(columnIndex as number)" :task-index="index" />
+
+      <draggable
+        v-model="column!.tasks" class="max-h-[77vh] overflow-y-auto !pt-[2px]" 
+        :group="{name: 'tasks'}"
+        item-key="index">
+        <template #item="{element: task, index}">
+          <kanban-task
+            :task="task"
+            :column-index="(columnIndex as number)"
+            :task-index="index" />
         </template>
-      </div>
+      </draggable>
+
       <div v-if="!isAddATaskInputVisible" class=" text-gray-300 !py-[6px] !pl-[8px] !pt-[8px] rounded-lg">
         <div class="hover:bg-greenish transition-colors duration-200 w-3/4 rounded-lg !pl-2 cursor-pointer" @click="isAddATaskInputVisible = true">
           <span class="font-bold">
@@ -57,7 +65,7 @@ import { Column } from '../../types/kanban'
 import { useKanbanStore } from '../../stores/kanban'
 import BaseConfirm from '../Base/BaseConfirm.vue'
 import KanbanTask from './KanbanTask.vue'
-
+import draggable from 'vuedraggable'
 //            @blur="handleCancel"
 
 interface Props {

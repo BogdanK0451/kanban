@@ -1,18 +1,29 @@
-
-
 <template>
-  <div class="!ml-1 !mt-3 flex overflow-x-auto overflow-y-hidden">
-    <template v-for="[index, column] of kanban.columns.entries()" :key="column"> 
-      <kanban-column :column="column" :column-index="index" />
+  <draggable
+    v-model="kanban.columns"
+    :disabled="isDraggingDisabled"
+    item-key="id"
+    tag="div"
+    class="!ml-1 !mt-3 flex overflow-x-auto overflow-y-hidden" :group="{name: 'columns'}">
+    <template #item="{element: column, index}">
+      <kanban-column v-if="index !== kanban.columns.length - 1" :column="column" :column-index="index" />
+      <kanban-column-add
+        v-else
+        @mouseenter="isDraggingDisabled = true"
+        @mouseleave="isDraggingDisabled = false" />
     </template>
-    <kanban-column-add />
-  </div>
+  </draggable>
 </template>
 
 <script setup lang="ts">
 import KanbanColumn from './KanbanColumn.vue'
 import KanbanColumnAdd from './KanbanColumnAdd.vue'
 import { useKanbanStore } from '../../stores/kanban.ts'
+import draggable from 'vuedraggable'
+import { ref } from 'vue'
 
 const { kanban } = useKanbanStore()
+const isDraggingDisabled = ref(false)
 </script>
+
+

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { Kanban } from '../types/kanban'
+import { Kanban, Column } from '../types/kanban'
 import { ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 
@@ -20,12 +20,15 @@ export const useKanbanStore = defineStore('kanban', () => {
           title: 'Done',
           tasks: [],
         },
+        // using the dummy column so that i could fit   <kanban-column-add /> into the flex array
+        { title: 'Dummy', tasks: [] },
       ],
     }),
   )
 
   function addColumn(title: string) {
-    kanban.value.columns.push({ title, tasks: [] })
+    const adderCol = kanban.value.columns.pop()
+    kanban.value.columns.push({ title, tasks: [] }, adderCol as Column)
   }
   function renameColumn(newName: string, index: number) {
     console.log(newName, index)
