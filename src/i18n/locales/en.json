@@ -2,7 +2,8 @@
   "kanban": {
     "column": {
       "add": "Add column",
-      "enterTitle": "Enter column title"
+      "enterTitle": "Enter column title",
+      "addAnother": "Add another column"
     },
     "task": {
       "enterTitle": "Enter task title",

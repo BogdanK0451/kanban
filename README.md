@@ -24,12 +24,14 @@ This project was developed as part of an assignment, using Vue.js and related 3r
 - Incase of lots of columns, columns overflow on the x axis.
 - Incase of lots of tasks inside a column, when reaching viewport height, an internal scrollbar attached to the column container will appear.
 - While adding a column or a task, dropping/losing focus(blur event) of the input "resets the operation".
+- Todos can be accessed at https://bogdank0451.github.io/todos
+- Kanban can be accessed at https://bogdank0451.github.io/kanban/
 
 ## Project Structure
 
 ### Used dependencies
 - **`vuedraggable`**: Enables drag-and-drop functionality for tasks and columns in the Kanban board.
-- **`vue-i18n`**: Helps and standardizes localization.
+- **`vue-i18n`**: Helps with and standardizes localization.
 - **`@vueuse/core`**: Contains utility functions for Vue.
 - **`tailwindcss`**: CSS framework for creating a responsive and modern design.
 - **`husky`** & **`@commitlint/cli`**: Enforces commit message standards and pre-commit hooks.

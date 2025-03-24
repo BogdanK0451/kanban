@@ -2,13 +2,13 @@
   <div class="!pb-3">
     <button 
       type="button" 
-      class="cursor-pointer bg-button hover:bg-button-hover rounded-sm text-sm !p-[6px] font-medium" 
+      class="cursor-pointer bg-button hover:bg-button-hover rounded-sm text-sm !p-[6px] font-medium confirm-button" 
       @click="$emit('confirm')">
       {{ buttonText }}
     </button>
     <button 
       type="button" 
-      class="!ml-2 !px-[8px] !py-[4px] text-gray-400 cursor-pointer rounded-sm font-medium hover:bg-greenish" 
+      class="!ml-2 !px-[8px] !py-[4px] text-gray-400 cursor-pointer rounded-sm font-medium hover:bg-greenish cancel-button" 
       @click="$emit('cancel')">
       ✖
     </button>
