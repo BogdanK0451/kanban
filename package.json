@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit",
     "prepare": "husky",
-    "lint": "eslint --fix --ignore-path .gitignore"
+    "lint": "eslint --fix --ignore-path .gitignore",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.15",
@@ -16,8 +17,8 @@
     "pinia": "^2.1.7",
     "tailwindcss": "^4.0.15",
     "vue": "3.5.13",
-    "vue-draggable-next": "^2.2.1",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
@@ -34,6 +35,7 @@
     "eslint-plugin-sonarjs": "^0.19.0",
     "eslint-plugin-unicorn": "^46.0.1",
     "eslint-plugin-vue": "^9.25.0",
+    "gh-pages": "^6.3.0",
     "husky": "^9.1.7",
     "prettier": "^2.8.8",
     "typescript": "^5.2.0",
