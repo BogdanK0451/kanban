@@ -24,10 +24,18 @@ This project was developed as part of an assignment, using Vue.js and related 3r
 - Incase of lots of columns, columns overflow on the x axis.
 - Incase of lots of tasks inside a column, when reaching viewport height, an internal scrollbar attached to the column container will appear.
 - While adding a column or a task, dropping/losing focus(blur event) of the input "resets the operation".
+- Todos can be accessed at https://bogdank0451.github.io/todos
+- Kanban can be accessed at https://bogdank0451.github.io/kanban/
 
 ## Project Structure
 
-The project follows standard Vue.js practices, utilizing TypeScript for type safety and Pinia for state management.
+### Used dependencies
+- **`vuedraggable`**: Enables drag-and-drop functionality for tasks and columns in the Kanban board.
+- **`vue-i18n`**: Helps with and standardizes localization.
+- **`@vueuse/core`**: Contains utility functions for Vue.
+- **`tailwindcss`**: CSS framework for creating a responsive and modern design.
+- **`husky`** & **`@commitlint/cli`**: Enforces commit message standards and pre-commit hooks.
+- **`gh-pages`**: Simplifies deployment to GitHub Pages.
 
 ### Key Files and Directories
 - **`types/`**: Type definitions for `Todo` and `Kanban` entities.
@@ -44,6 +52,7 @@ The project follows standard Vue.js practices, utilizing TypeScript for type saf
   - `KanbanBoard.vue`, `KanbanColumn.vue`, `KanbanColumnAdd.vue`, `KanbanTask.vue`: Components for Kanban functionality.
   - `BaseAppBar.vue`, `BaseConfirm.vue`: Basic UI components.
 - **`router/`**: Vue Router configuration for navigation between To-Do and Kanban views.
+
 
 ## Setup and Running
 

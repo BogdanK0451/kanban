@@ -7,7 +7,7 @@
             +
           </span>
           <span class="font-medium text-sm  text-some-text">
-            Add another column
+            {{ $t('kanban.column.addAnother') }}
           </span>
         </div>
       </div>
@@ -50,8 +50,14 @@ function handleConfirm() {
 function handleCancel(event?: FocusEvent) {
   const relatedTarget = event?.relatedTarget as HTMLElement
   if (relatedTarget?.tagName === 'BUTTON') {
-    handleConfirm()
-    return
+    if (relatedTarget.classList.contains('confirm-button')) {
+      handleConfirm()
+      return
+    } else if (relatedTarget.classList.contains('cancel-button')) {
+      isAddAColumnInputVisible.value = false
+      input.value = ''
+      return
+    }
   }
 
   isAddAColumnInputVisible.value = false

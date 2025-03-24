@@ -100,8 +100,14 @@ function handleCancel(event?: FocusEvent) {
   // so we do a check if on blur focus went to a button
   const relatedTarget = event?.relatedTarget as HTMLElement
   if (relatedTarget?.tagName === 'BUTTON') {
-    handleConfirm()
-    return
+    if (relatedTarget.classList.contains('confirm-button')) {
+      handleConfirm()
+      return
+    } else if (relatedTarget.classList.contains('cancel-button')) {
+      isAddATaskInputVisible.value = false
+      input.value = ''
+      return
+    }
   }
 
   isAddATaskInputVisible.value = false
