@@ -22,8 +22,5 @@ interface Props {
 
 defineProps<Props>()
 
-defineEmits<{
-  (e: 'confirm'): void
-  (e: 'cancel'): void
-}>()
+defineEmits<{ (e: 'confirm'): void; (e: 'cancel'): void }>()
 </script>

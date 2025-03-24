@@ -40,7 +40,7 @@
             +
           </span>
           <span class="font-bold text-sm">
-            Add task
+            {{ $t('kanban.task.add') }}
           </span>
         </div>
       </div>
@@ -50,9 +50,10 @@
             ref="textarea" v-model="input"
             class="outline-2 outline-gray-500  text-gray-300 text-sm resize-none rounded-lg w-full bg-kanban-input !pl-2 !pt-1"
             rows="3"
-            placeholder="Enter a title" />
+            :placeholder="$t('kanban.task.enterTitle')"
+            @blur="handleCancel" />
         </div>
-        <base-confirm button-text="Add task" @confirm="handleConfirm" @cancel="handleCancel" />
+        <base-confirm :button-text="$t('kanban.task.add')" @confirm="handleConfirm" @cancel="handleCancel" />
       </div>
     </div>
   </div>
@@ -66,7 +67,6 @@ import { useKanbanStore } from '../../stores/kanban'
 import BaseConfirm from '../Base/BaseConfirm.vue'
 import KanbanTask from './KanbanTask.vue'
 import draggable from 'vuedraggable'
-//            @blur="handleCancel"
 
 interface Props {
   columnIndex: number | null
@@ -86,7 +86,24 @@ const columnTitle = ref(props.column?.title)
 const isAddATaskInputVisible = ref(false)
 const isRenameColumnInputVisible = ref(false)
 
-function handleCancel() {
+function handleConfirm() {
+  if (input.value) {
+    addTask(input.value, props.columnIndex as number)
+    isAddATaskInputVisible.value = false
+    input.value = ''
+  }
+}
+
+function handleCancel(event?: FocusEvent) {
+  // this is necessary because of the interaction of @blur and @confirm, by pressing the button and firing @confirm, @ blur would fire first,
+  // causing the v-else condition to not be satisfied, hiding those dom elements and cancelling the confirm handler
+  // so we do a check if on blur focus went to a button
+  const relatedTarget = event?.relatedTarget as HTMLElement
+  if (relatedTarget?.tagName === 'BUTTON') {
+    handleConfirm()
+    return
+  }
+
   isAddATaskInputVisible.value = false
   input.value = ''
 }
@@ -97,15 +114,6 @@ function handleBlur() {
     columnTitle.value = props.column?.title
   }
   isRenameColumnInputVisible.value = false
-}
-function handleConfirm() {
-  console.log(input.value)
-
-  if (input.value) {
-    console.log(input.value)
-    addTask(input.value, props.columnIndex as number)
-    handleCancel()
-  }
 }
 
 watch(isAddATaskInputVisible, (newVal) => {

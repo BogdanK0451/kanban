@@ -18,9 +18,9 @@
           ref="textarea" v-model="input" 
           class=" outline-2 outline-gray-500 text-gray-300 text-sm resize-none rounded-sm w-full  bg-kanban-input !pl-2 !py-1"
           rows="1"
-          placeholder="Enter a title" />
+          :placeholder="$t('kanban.column.enterTitle')" @blur="handleCancel" />
       </div>
-      <base-confirm button-text="Add column" @confirm="handleConfirm" @cancel="handleCancel" />
+      <base-confirm :button-text="$t('kanban.column.add')" @confirm="handleConfirm" @cancel="handleCancel" />
     </div>
   </div>
 </template>
@@ -31,22 +31,31 @@ import { ref, nextTick, watch } from 'vue'
 import { useKanbanStore } from '../../stores/kanban'
 import BaseConfirm from '../Base/BaseConfirm.vue'
 
+const emits = defineEmits(['added-column'])
 const { textarea, input } = useTextareaAutosize({ styleProp: 'minHeight' })
 
 const { addColumn } = useKanbanStore()
 
 const isAddAColumnInputVisible = ref(false)
 
-function handleCancel() {
-  isAddAColumnInputVisible.value = false
-  input.value = ''
-}
-
 function handleConfirm() {
   if (input.value) {
     addColumn(input.value)
-    handleCancel()
+    isAddAColumnInputVisible.value = false
+    input.value = ''
+    emits('added-column')
   }
+}
+
+function handleCancel(event?: FocusEvent) {
+  const relatedTarget = event?.relatedTarget as HTMLElement
+  if (relatedTarget?.tagName === 'BUTTON') {
+    handleConfirm()
+    return
+  }
+
+  isAddAColumnInputVisible.value = false
+  input.value = ''
 }
 
 watch(isAddAColumnInputVisible, (newVal) => {

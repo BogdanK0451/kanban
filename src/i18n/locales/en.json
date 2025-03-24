@@ -1,0 +1,13 @@
+{
+  "kanban": {
+    "column": {
+      "add": "Add column",
+      "enterTitle": "Enter column title"
+    },
+    "task": {
+      "enterTitle": "Enter task title",
+      "add": "Add task",
+      "enterDescription": "Enter task description"
+    }
+  }
+}
